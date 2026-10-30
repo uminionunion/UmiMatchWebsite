@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import path from 'path';
 import fs from 'fs';
+import fileUpload from 'express-fileupload';
 import { db } from './db.js';
 import umiMatchRouter from './umimatch.js';
 
@@ -15,6 +16,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(fileUpload());
+
+// Shared data directory for SQLite databases
 
 // Shared data directory for SQLite databases
 const DATA_DIRECTORY = process.env.DATA_DIRECTORY || path.join(process.cwd(), 'data');
