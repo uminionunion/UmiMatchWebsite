@@ -1,0 +1,14 @@
+
+version: '3.8'
+services:
+  umimatch-api:
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=your-super-secret-key
+      - DATA_DIRECTORY=/app/data
+    restart: always
